@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>915</width>
+    <height>742</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>601</width>
-     <height>391</height>
+     <width>901</width>
+     <height>741</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -27,13 +27,13 @@
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
-     <string>Tab 1</string>
+     <string>畸变矫正</string>
     </attribute>
-    <widget class="QLabel" name="imgViewer">
+    <widget class="QLabel" name="CalibImgViewer">
      <property name="geometry">
       <rect>
        <x>260</x>
-       <y>10</y>
+       <y>60</y>
        <width>320</width>
        <height>240</height>
       </rect>
@@ -42,23 +42,13 @@
       <string/>
      </property>
     </widget>
-    <widget class="QTextEdit" name="calculateDisplay">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>160</y>
-       <width>221</width>
-       <height>201</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>11</y>
        <width>121</width>
-       <height>141</height>
+       <height>168</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -81,14 +71,14 @@
         <item>
          <widget class="QLineEdit" name="cornersOfRowEdit">
           <property name="text">
-           <string>6</string>
+           <string>11</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="cornersOfColEdit">
           <property name="text">
-           <string>4</string>
+           <string>7</string>
           </property>
          </widget>
         </item>
@@ -110,6 +100,16 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QCheckBox" name="cutImgCheck">
+          <property name="text">
+           <string>四周裁剪</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>
@@ -121,10 +121,126 @@
       </item>
      </layout>
     </widget>
+    <widget class="QLabel" name="currentParamShow">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>430</y>
+       <width>211</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>当前畸变参数：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_55">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>20</y>
+       <width>271</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;说明：&lt;/p&gt;&lt;p&gt;1. 载入图片路径不能有中文！&lt;/p&gt;&lt;p&gt;2. 内角点数量设置不对将可能导致程序卡死&lt;/p&gt;&lt;p&gt;3. 全局畸变矫正系数在程序关闭后不会保存&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="lastCalibImgBtn">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>350</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>上一张</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CalibImgResult">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>380</y>
+       <width>320</width>
+       <height>240</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="nextCalibImgBtn">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>350</y>
+       <width>81</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>下一张</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_56">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>320</y>
+       <width>151</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>畸变矫正预览</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="imgLoadStatus">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>10</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>尚未载入图片</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>180</y>
+       <width>191</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QTextEdit" name="calculateDisplay"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="calibParamSetBtn">
+        <property name="text">
+         <string>应用畸变参数(全局)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
-     <string>Tab 2</string>
+     <string>待开发功能</string>
     </attribute>
    </widget>
   </widget>
